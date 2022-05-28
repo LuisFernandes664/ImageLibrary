@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LibraryService } from 'src/services/library.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private subscription: Subscription;
+  public show
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
+  constructor(private libraryservice: LibraryService) { }
+
+  ngOnInit(): void {
+
+      this.subscription = this.libraryservice.getImages().subscribe(
+        {
+          next: data => {
+            console.log(data);
+          },
+          error: error => {
+            console.log(error);
+          },
+          complete: () => {
+            console.log('Complete')
+          }
+        }
+      )
+      console.log(this.show)
+  }
 }
