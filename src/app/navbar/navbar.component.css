@@ -10,7 +10,9 @@
     transition: all .2s linear;
 }
 
-:root {
+ /* VARIAVEIS ========================*/
+
+ :root {
     --green: #008080;
     --black: #2c2c54;
 }
@@ -28,10 +30,8 @@
     color: var(--black);
     font-weight: bolder;
 }
-
-.header-1 .logo i {
-    color: var(--green);
-    padding: .5rem;
+.imgLogo{
+    width: 50px;
 }
 
 .header-1 .search-box-container {
@@ -122,11 +122,12 @@
     cursor: pointer;
 }
 
-/* ----------------- media query start -----------------  */
+/*MEDIA QUERYS  =======================*/
 
 @media (max-width:1200px) {
-    html {
-        font-size: 55%;
+    .header-1,
+    .header-2 {
+        padding: 2rem;
     }
 }
 
@@ -135,46 +136,7 @@
     .header-2 {
         padding: 2rem;
     }
-}
-
-@media (max-width:768px) {
-    #navbarToggleExternalContent {
-        display: initial;
-    }
-    .header-2 .navbar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--green);
-        padding: 1rem 2rem;
-        display: none;
-    }
-    .header-2 .navbar.active {
-        display: initial;
-    }
-    .header-2 .navbar a {
-        font-size: 2.5rem;
-        display: block;
-        background: #fff;
-        text-align: center;
-        padding: 1rem;
-        margin: 1.5rem 0;
+    .search-box-container{
+        max-width: 23rem;
     }
 }
-
-@media(max-width:450px) {
-    html {
-        font-size: 50%;
-    }
-    .header-1 {
-        flex-flow: column;
-    }
-    .header-1 .search-box-container {
-        width: 100%;
-        margin-top: 2rem;
-    }
-    .header-1 .logo {
-        font-size: 4rem;
-    }
-}       

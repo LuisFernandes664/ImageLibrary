@@ -9,6 +9,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DetailsImageComponent } from './details-image/details-image.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {path: '', component: HomeComponent},
+  {path: 'images', component: DetailsImageComponent, children: [
+    {path: ':image_id', component: DetailsImageComponent}
+  ]}
+]
 
 @NgModule({
   declarations: [
@@ -22,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [
     LibraryService

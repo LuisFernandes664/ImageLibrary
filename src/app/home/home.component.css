@@ -17,8 +17,8 @@
     margin-top: 30px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    background-color: #fafafa;
+    /*flex-wrap: wrap;*/
+    background-color: #ffffff;
 }
 
 .sizeimage{
@@ -29,3 +29,21 @@
     /*object-fit: cover;*/
 }
 
+.Page , .pagination{
+    padding: 2rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.page-item{
+    padding: 0.5rem;
+}
+
+.page-link{
+    padding: 0.5rem 1.5rem;
+}
+
+.next-previus{
+    width: 29px;
+}
