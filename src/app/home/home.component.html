@@ -2,7 +2,9 @@
     <div *ngFor="let item of this.responseAny" class="card" style="width: 18rem;">
         <img src="{{item.urls.regular}}" class="card-img-top sizeimage" alt="...">
         <div class="card-body">
-            <p class="card-text">{{item.description}}</p>
+            <p class="card-text">{{item.description}}
+              {{item.description>0 ? item.description : item.alt_description}}
+            </p>
 
         <small>{{item.created_at | date:'shortDate'}}</small>
         </div>
