@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { LibraryService } from 'src/services/library.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+
+  public newSearch: string = "";
+
+
+
+  @Output()
+  newTextSearch: EventEmitter<string> = new EventEmitter<string>();
+
+  onSearchChange(){
+    this.newTextSearch.emit(this.newSearch)
+  }
+
+  constructor(private libraryservice: LibraryService) { }
 
   ngOnInit(): void {
-    
+
+  }
+
+  buttonSearch(): void{
+    //this.newTextSearch = this.newSearch
+    this.libraryservice.retrieveBySearch(this.newSearch)
+    console.log(this.newSearch)
+    this.newSearch = "";
   }
 
 }

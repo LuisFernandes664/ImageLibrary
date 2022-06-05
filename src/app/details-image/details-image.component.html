@@ -1,1 +1,52 @@
-<p>details-image works!</p>
+
+
+<div class="container">
+    <section class="member-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    <div class="img-container">
+                        <img src="{{this.nowID.urls.regular}}" alt="team member" class="img-full">
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8">
+                    <div class="member_designation">
+                        <h2>{{this.nowID.user.name}} ({{this.nowID.created_at}})</h2>
+                        <span>CEO Bootdey</span>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-danger btn-lg">Likes <span>{{this.nowID.likes}}</span></button>
+                        <button type="button" class="btn btn-info btn-lg">Downloads</button>
+                        <button type="button" class="btn btn-outline-dark btn-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                              </svg>
+                            Favorite</button>
+                    </div>
+                    <div class="member_desc">
+                        <p>
+                            {{this.nowID.description !=undefined && this.nowID.description.length !=0 ? this.nowID.description : this.nowID.alt_description}}
+                        </p>
+                    </div>
+                    
+                    <div class="row ">
+                        <div class="col-lg-6 member_desc">
+                            <h4>Nec nisl iaculis pulv</h4>
+                            <p>
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+                            </p>
+                        </div>
+                        <div class="col-lg-6 member_desc">
+                            <h4>Aesent nec nisl</h4>
+                            <p>
+                                Cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>

@@ -10,12 +10,17 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DetailsImageComponent } from './details-image/details-image.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'images', component: DetailsImageComponent, children: [
+  {path: 'details', component: DetailsImageComponent, children: [
     {path: ':image_id', component: DetailsImageComponent}
-  ]}
+  ]},
+  {
+    path: '**', component: ErrorComponent
+  }
 ]
 
 @NgModule({
@@ -23,7 +28,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    DetailsImageComponent
+    DetailsImageComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,7 @@ const routes: Routes = [
     NgbModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
     LibraryService
