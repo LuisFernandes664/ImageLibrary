@@ -17,20 +17,20 @@ export class DetailsImageComponent implements OnInit {
   allImages: any;
   nowID: any;
 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
+  }*/
   
 
   constructor(private libraryservice: LibraryService, private activeRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    let id = this.activeRoute.snapshot.children[0].params["id"];
+    let id = this.activeRoute.snapshot.children[0].params["image_id"];
     this.showImage = id;
     console.log(id)
 
 
-    this.allImages = this.libraryservice.getImages().subscribe(
+    this.allImages = this.libraryservice.getImagesById(this.showImage).subscribe(
       {
         next: data => {
           this.responseAny = data as any;
@@ -45,20 +45,6 @@ export class DetailsImageComponent implements OnInit {
         }
       }
     )
-
-    for (let i = 0; i < this.allImages.length; i++) {
-      if(String(this.allImages[i].nameMovie) == this.showImage){
-        this.nowID = this.allImages[i]
-        let ind = i
-        console.log(ind)
-      }
-    }
-
-    this.activeRoute.params.subscribe((params : Params) => {
-      this.image = {
-        id: params['id']
-      }
-    });
   }
 
 }

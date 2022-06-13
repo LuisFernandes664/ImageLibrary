@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LibraryService } from 'src/services/library.service';
 
@@ -16,15 +17,18 @@ export class HomeComponent implements OnInit {
   dateCreate: any;
   nowSearch: any;
 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     this.subscription.unsubscribe();
     this.subscriptionSearch.unsubscribe();
-  }
+  }*/
 
-  constructor(private libraryservice: LibraryService) { }
+  constructor(private libraryservice: LibraryService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
 
+   
+
+    
 
     //////NORMAL OR RANDOM IMAGE
       this.subscription = this.libraryservice.getImages().subscribe(
@@ -41,12 +45,37 @@ export class HomeComponent implements OnInit {
           }
         }
       )
+      
+      let name = this.activeRoute.snapshot.children[0].params["nameSearch"];
+
+      console.log(name)
+      this.libraryservice.retrieveBySearch(name)
+      console.log(name)
+      name = "";
+
+      if(name != undefined || name!= ''){
+        this.subscription.unsubscribe;
+        this.subscription = this.libraryservice.retrieveBySearch(name).subscribe(
+        {
+          next: data => {
+            this.responseAny = data as any;
+            console.log(data);
+          },
+          error: error => {
+            console.log(error);
+          },
+          complete: () => {
+            console.log('Complete')
+          }
+        }
+      )
+      }
+      
 
 
-      this.nowSearch = this.libraryservice.searchNow
+      /*this.nowSearch = this.libraryservice.searchNow
       
       if(this.nowSearch != undefined){
-          this.subscription.unsubscribe();
           this.subscriptionSearch = this.libraryservice.retrieveBySearch(this.nowSearch).subscribe(
             {
               next: data => {
@@ -71,8 +100,10 @@ export class HomeComponent implements OnInit {
             }
           )
         console.log('teste: ' + this.nowSearch)
-      }
+      }*/
   }
+
+
   
   
 }

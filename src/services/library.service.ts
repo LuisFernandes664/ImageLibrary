@@ -14,15 +14,27 @@ export class LibraryService {
     
     private apiKey: string = 'client_id=dd4e1cb73ca3a1036d4e98d26f72a439141dc17039e1ae79b7bc2a23f3488578';
 
-    public searchNow: string;
 
+    searchNow: string;
+
+    unsplashUrl: string = 'https://api.unsplash.com';
+    search: string = '/search/photos';
+    searchQuery: string = '&query=';
+    pagesize: string = '&per_page=30'
+
+    
+    getSearchedImages(query: string): Observable<any> {
+        const searchedUrl = this.unsplashUrl + this.search + this.apiKey + this.searchQuery + query + this.pagesize;
+        console.log(this.http.get(searchedUrl))
+        return this.http.get(searchedUrl);
+      }
 
     getImages(): Observable<any>{
         let fullUrl: string = this.urlApi +this.apiKey
         return this.http.get(fullUrl)
     }
 
-    getImagesById(id: number): Observable<any> { 
+    getImagesById(id: string): Observable<any> { 
         return this.http.get(`https://api.unsplash.com/photos/${id}?` + this.apiKey);
     }
 

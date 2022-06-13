@@ -1,21 +1,21 @@
 
 
 <div class="container">
-    <section class="member-details">
+    <section class="image-details">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-4">
                     <div class="img-container">
-                        <img src="{{this.nowID.urls.regular}}" alt="team member" class="img-full">
+                        <img src="{{this.responseAny.urls.regular}}" alt="team member" class="img-full">
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8">
-                    <div class="member_designation">
-                        <h2>{{this.nowID.user.name}} ({{this.nowID.created_at}})</h2>
+                    <div class="secondcolumn">
+                        <h2>{{this.responseAny.user.name}} ({{this.responseAny.created_at}})</h2>
                         <span>CEO Bootdey</span>
                         <br>
                         <br>
-                        <button type="button" class="btn btn-danger btn-lg">Likes <span>{{this.nowID.likes}}</span></button>
+                        <button type="button" class="btn btn-danger btn-lg">Likes <span>{{this.responseAny.likes}}</span></button>
                         <button type="button" class="btn btn-info btn-lg">Downloads</button>
                         <button type="button" class="btn btn-outline-dark btn-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -24,23 +24,23 @@
                               </svg>
                             Favorite</button>
                     </div>
-                    <div class="member_desc">
+                    <div class="secondcolumn">
                         <p>
-                            {{this.nowID.description !=undefined && this.nowID.description.length !=0 ? this.nowID.description : this.nowID.alt_description}}
+                            {{this.responseAny.description !=undefined && this.allImages.responseAny.length !=0 ? this.responseAny.description : this.responseAny.alt_description}}
                         </p>
                     </div>
                     
-                    <div class="row ">
-                        <div class="col-lg-6 member_desc">
-                            <h4>Nec nisl iaculis pulv</h4>
+                    <div class="row secondcolumn">
+                        <div class="col-lg-6 image_desc">
+                            <h4>Primeiro texto</h4>
                             <p>
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.
+                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis itaque quos autem porro fugit aliquam, hic excepturi quidem optio quam, veritatis facilis consequuntur? Amet distinctio aperiam veritatis quos reiciendis perferendis!
                             </p>
                         </div>
-                        <div class="col-lg-6 member_desc">
-                            <h4>Aesent nec nisl</h4>
+                        <div class="col-lg-6 image_desc">
+                            <h4>Segundo texto</h4>
                             <p>
-                                Cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempore repudiandae aspernatur facilis veritatis et repellendus autem distinctio odio mollitia incidunt nostrum, eos amet quia saepe doloremque? Officiis, dolore eius.
                             </p>
                         </div>
                     </div>

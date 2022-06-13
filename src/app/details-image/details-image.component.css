@@ -1,5 +1,10 @@
 .container{
     margin-top: 3rem;
+    
+}
+.image-details{
+    /*margin-bottom: 27%; GRANDE*/
+    margin-bottom: 5%;
 }
 
 .btn{
@@ -8,4 +13,15 @@
 
 .bi-plus-circle{
     margin-top: -3px;
+}
+
+.img-full{
+    margin-left: -50%;
+    height:400px;
+    width: 600px;
+    object-fit:cover;
+}
+
+.secondcolumn{
+    margin-left: 20%;
 }

@@ -14,7 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, children: [
+    {path: 'search/:nameSearch', component: HomeComponent}
+  ]},
   {path: 'details', component: DetailsImageComponent, children: [
     {path: ':image_id', component: DetailsImageComponent}
   ]},
