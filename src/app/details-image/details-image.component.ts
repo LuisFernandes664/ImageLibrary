@@ -58,21 +58,7 @@ export class DetailsImageComponent implements OnInit {
   }
 
   removeFav(id:string): void{
-    this.allImages = this.libraryservice.retriveAll()
-
-    //console.log(this.allMovies)
-
-    for (let i = 0; i < this.allImages.length; i++) {
-      //console.log(JSON.stringify((this.allMovies[i].nameMovie)))
-      if(String(this.allImages[i].id == id)){
-        //console.log(this.allMovies[i].nameMovie)
-        this.atualImage = this.allImages[i]
-        let ind = i
-        console.log(ind)
-      }
-    }
-    this.libraryservice.removeMovie(this.atualImage)
-    
+    this.libraryservice.removeMovie(id)
   }
 
 }

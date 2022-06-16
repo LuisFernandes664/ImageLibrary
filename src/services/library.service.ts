@@ -59,7 +59,7 @@ export class LibraryService {
         console.log(this.ImagesFav)
     }
     
-    removeMovie(idfavorite: number) : void {
+    removeMovie(idfavorite: string) : void {
         let index: number;
     
         this.ImagesFav.forEach(function(ImagesFavorite, i){
