@@ -12,14 +12,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ErrorComponent } from './error/error.component';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { SearchComponent } from './search/search.component';
+import { TendenciesComponent } from './tendencies/tendencies.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, children: [
-    {path: 'search/:nameSearch', component: HomeComponent}
-  ]},
+  {path: '', component: HomeComponent},
   {path: 'details', component: DetailsImageComponent, children: [
     {path: ':image_id', component: DetailsImageComponent}
   ]},
+  {
+    path: 'Favorite', component: FavoriteComponent
+  },
+  {
+    path: 'search/:nameSearch', component: SearchComponent
+  },
+  {
+    path: 'Fashion', component: TendenciesComponent
+  },
+  {
+    path: 'Film', component: TendenciesComponent
+  },
+  {
+    path: 'Wallpapers', component: TendenciesComponent
+  },
   {
     path: '**', component: ErrorComponent
   }
@@ -31,7 +47,10 @@ const routes: Routes = [
     HomeComponent,
     NavbarComponent,
     DetailsImageComponent,
-    ErrorComponent
+    ErrorComponent,
+    FavoriteComponent,
+    SearchComponent,
+    TendenciesComponent
   ],
   imports: [
     BrowserModule,

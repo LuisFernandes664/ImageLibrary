@@ -1,0 +1,30 @@
+
+<div *ngIf="this.ImageParseSize == 0; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+  <div id="main">
+    <div class="notfound">
+      <img class="imageNotFound" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/640px-Image_not_available.png" alt="">
+      <br>
+        <h1>Add some image to favorites/Search something</h1>
+    </div>
+  </div>
+</ng-template>
+<ng-template #elseBlock>
+  <div [innerHTML]='this.notFoundFavorite'></div>
+  <div class="row">
+    <div 
+    [routerLink]="['/details/' + item.id]"
+    *ngFor="let item of this.ImageParse" class="card" style="width: 25rem;">
+        <img src="{{item.regularImage}}" class="card-img-top sizeimage" alt="...">
+        <div class="card-body">
+
+            <p class="card-text">
+              {{item.description !=undefined && item.description.length !=0 ? item.description : item.alt_description}}
+            </p>
+
+            <small>{{item.created_at | date:'shortDate'}}</small>
+        </div>
+    </div>
+</div>
+</ng-template>
+

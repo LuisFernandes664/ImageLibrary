@@ -1,0 +1,58 @@
+.card-img-top{
+    height:300px;
+    object-fit:cover;
+}
+
+.card{
+    height: auto;
+    margin: 5px;
+    padding: 0px;
+    transition: all linear 0.4s;
+}
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+.row{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    /*flex-wrap: wrap;*/
+    background-color: #ffffff;
+}
+
+.card-body{
+    height: auto;
+}
+
+.sizeimage{
+    /*margin-top: 100px;*/
+    width: 100%;
+    height: 400px;
+    cursor: pointer;
+    /*object-fit: cover;*/
+}
+
+.Page , .pagination{
+    padding: 2rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.page-item{
+    padding: 0.5rem;
+}
+
+.page-link{
+    padding: 0.5rem 1.5rem;
+}
+
+.next-previus{
+    width: 29px;
+}
+
+.pagination{
+    cursor: pointer;
+}

@@ -1,6 +1,5 @@
 .container{
     margin-top: 3rem;
-    
 }
 .image-details{
     /*margin-bottom: 27%; GRANDE*/
@@ -17,11 +16,24 @@
 
 .img-full{
     margin-left: -50%;
-    height:400px;
-    width: 600px;
-    object-fit:cover;
+    max-height: 700px;
+    max-width: 600px;
+    object-fit: container;
 }
 
 .secondcolumn{
     margin-left: 20%;
+}
+
+.tag{
+    margin-top: 15px;
+    background-color: rgba(128, 128, 128, 0.211);
+}
+
+.list-group{
+    margin-left: 40px;
+}
+
+hr{
+    margin-left: 180px;
 }

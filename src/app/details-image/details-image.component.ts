@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LibraryService } from 'src/services/library.service';
+
 
 @Component({
   selector: 'app-details-image',
@@ -10,19 +11,13 @@ import { LibraryService } from 'src/services/library.service';
 })
 export class DetailsImageComponent implements OnInit {
 
-  image: {id: string};
   subscription: Subscription;
   showImage: any;
   responseAny: any;
   allImages: any;
-  nowID: any;
+  atualImage:any;
 
-  /*ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }*/
-  
-
-  constructor(private libraryservice: LibraryService, private activeRoute: ActivatedRoute ) { }
+  constructor(private libraryservice: LibraryService, private activeRoute: ActivatedRoute, private router: Router ) { }
 
   ngOnInit(): void {
     let id = this.activeRoute.snapshot.children[0].params["image_id"];
@@ -38,6 +33,7 @@ export class DetailsImageComponent implements OnInit {
           //console.log(responseAny[0])
         },
         error: error => {
+          this.router.navigate(['**'])
           console.log(error);
         },
         complete: () => {
@@ -45,6 +41,38 @@ export class DetailsImageComponent implements OnInit {
         }
       }
     )
+  }
+
+  AddFavorite(id: string, regularImage: string, UserName:string, description: string, alt_description: string, created_at:any): void{
+
+    let MoldeImageFav = {
+      id: id,
+      regularImage: regularImage,
+      UserName: UserName,
+      description: description,
+      alt_description: alt_description,
+      created_at: created_at
+    }
+
+    this.libraryservice.createFavorite(MoldeImageFav)
+  }
+
+  removeFav(id:string): void{
+    this.allImages = this.libraryservice.retriveAll()
+
+    //console.log(this.allMovies)
+
+    for (let i = 0; i < this.allImages.length; i++) {
+      //console.log(JSON.stringify((this.allMovies[i].nameMovie)))
+      if(String(this.allImages[i].id == id)){
+        //console.log(this.allMovies[i].nameMovie)
+        this.atualImage = this.allImages[i]
+        let ind = i
+        console.log(ind)
+      }
+    }
+    this.libraryservice.removeMovie(this.atualImage)
+    
   }
 
 }

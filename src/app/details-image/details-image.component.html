@@ -11,39 +11,62 @@
                 </div>
                 <div class="col-lg-9 col-md-8">
                     <div class="secondcolumn">
-                        <h2>{{this.responseAny.user.name}} ({{this.responseAny.created_at}})</h2>
+                        <h2>{{this.responseAny.user.name}} ({{this.responseAny.created_at | date:'shortDate'}})</h2>
                         <span>CEO Bootdey</span>
                         <br>
                         <br>
-                        <button type="button" class="btn btn-danger btn-lg">Likes <span>{{this.responseAny.likes}}</span></button>
-                        <button type="button" class="btn btn-info btn-lg">Downloads</button>
-                        <button type="button" class="btn btn-outline-dark btn-lg">
+                        <button type="button" class="btn btn-danger btn-lg">Likes - <span>{{this.responseAny.likes}}</span></button>
+                        <button type="button" class="btn btn-info btn-lg">Downloads - <span>{{this.responseAny.downloads}}</span></button>
+                        <button type="button" class="btn btn-outline-dark btn-lg" (click)="AddFavorite(this.responseAny.id, this.responseAny.urls.regular, this.responseAny.user.name, this.responseAny.description, this.responseAny.alt_description, this.responseAny.created_at )">
+
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                               </svg>
                             Favorite</button>
+                            <button type="button" class="btn btn-outline-dark btn-lg" (click)="removeFav(this.responseAny.id)">Remove Fav</button>
                     </div>
-                    <div class="secondcolumn">
-                        <p>
-                            {{this.responseAny.description !=undefined && this.allImages.responseAny.length !=0 ? this.responseAny.description : this.responseAny.alt_description}}
-                        </p>
-                    </div>
+                    <br>
+                    <br>
                     
                     <div class="row secondcolumn">
-                        <div class="col-lg-6 image_desc">
-                            <h4>Primeiro texto</h4>
+                        <div class="col-lg-9 image_desc">
+                            <h4>Descrição</h4>
                             <p>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis itaque quos autem porro fugit aliquam, hic excepturi quidem optio quam, veritatis facilis consequuntur? Amet distinctio aperiam veritatis quos reiciendis perferendis!
+                                {{this.responseAny.description !=undefined && this.allImages.responseAny !=0 ? this.responseAny.description : this.responseAny.alt_description}}
                             </p>
                         </div>
-                        <div class="col-lg-6 image_desc">
-                            <h4>Segundo texto</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempore repudiandae aspernatur facilis veritatis et repellendus autem distinctio odio mollitia incidunt nostrum, eos amet quia saepe doloremque? Officiis, dolore eius.
-                            </p>
-                        </div>
+                        <!---->
                     </div>
+                    <br>
+                    <div class="row secondcolumn">
+                        <h4>
+                            <img src="{{this.responseAny.user.profile_image.medium}}" alt="">
+                            {{this.responseAny.user.username}}</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur tempore repudiandae aspernatur facilis veritatis et repellendus autem distinctio odio mollitia incidunt nostrum, eos amet quia saepe doloremque? Officiis, dolore eius.
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="row secondcolumn">   
+
+                        <span><strong>Tags:</strong></span>                     
+                        <div *ngIf="this.responseAny.tags_preview.title == undefined || this.responseAny.tags_preview.title.length == 0; then thenBlock else elseBlock"></div>
+                        
+                        <ng-template #thenBlock>
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item tag" *ngFor="let item of this.responseAny.tags">{{item.title}}</li>
+                            </ul>
+                        </ng-template>
+                        <ng-template #elseBlock>
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item tag" *ngFor="let item of this.responseAny.tags_preview">{{item.title}}</li>
+                            </ul>
+                        </ng-template>
+
+
+                    </div>
+
                 </div>
 
             </div>
